@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    username: devv
+    password: manchester
+    url: jdbc:mysql://localhost:3306/medispatch
+
+  jpa:
+    hibernate:
+      ddl-auto: update
