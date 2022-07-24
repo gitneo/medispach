@@ -1,10 +1,13 @@
 package com.musala.medispach.drone;
 
+import com.musala.medispach.delivery.Delivery;
 import lombok.Data;
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The Drone entity class
@@ -36,4 +39,11 @@ public class Drone {
     @Enumerated(EnumType.STRING)
     private DroneState state;
 
+    @OneToMany(mappedBy = "drone")
+    List<Delivery> deliveryList =  new ArrayList<>();
+
+    public void addDelivery(Delivery delivery){
+        deliveryList.add(delivery);
+        delivery.setDrone(this);
+    }
 }

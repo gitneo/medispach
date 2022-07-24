@@ -1,5 +1,6 @@
 package com.musala.medispach.medication;
 
+import com.musala.medispach.delivery.Delivery;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -26,5 +27,9 @@ public class Medication {
 
     @Column(name = "med_image")
     private String image;
+
+    @ManyToOne()
+    @JoinColumn(name = "med_del_code")
+    private Delivery delivery;
 
 }
