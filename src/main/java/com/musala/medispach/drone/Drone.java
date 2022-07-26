@@ -22,8 +22,8 @@ public class Drone {
     @Column(name = "drn_code")
     private long id;
 
-    @Column(name = "drn_serial", nullable = false)
-    private BigDecimal serialNo;
+    @Column(name = "drn_serial", nullable = false, length = 100)
+    private int serialNo;
 
     @Column(name = "drn_model", nullable = false)
     @Enumerated(EnumType.STRING)
@@ -32,7 +32,7 @@ public class Drone {
     @Column(name = "drn_weight_limit", nullable = false)
     private BigDecimal weightLimit;
 
-    @Column(name = "drn_batt_capcity" , nullable = false)
+    @Column(name = "drn_batt_capcity" , nullable = false, precision = 2, scale = 2)
     private BigDecimal batteryCapacity;
 
     @Column(name = "drn_state" , nullable = false)
@@ -40,7 +40,7 @@ public class Drone {
     private DroneState state;
 
     @OneToMany(mappedBy = "drone")
-    List<Delivery> deliveryList =  new ArrayList<>();
+    private List<Delivery> deliveryList =  new ArrayList<>();
 
     public void addDelivery(Delivery delivery){
         deliveryList.add(delivery);
