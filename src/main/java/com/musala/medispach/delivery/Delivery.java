@@ -1,5 +1,6 @@
 package com.musala.medispach.delivery;
 
+import com.musala.medispach.deliveryItem.DeliveryItem;
 import com.musala.medispach.drone.Drone;
 import com.musala.medispach.medication.Medication;
 import lombok.Data;
@@ -28,6 +29,6 @@ public class Delivery {
     @JoinColumn(name = "del_dr_code")
     private Drone drone;
 
-    @OneToMany(mappedBy = "delivery")
-    List<Medication> listOfMedications = new ArrayList<>();
+    @OneToMany(mappedBy = "deliveryId")
+    List<DeliveryItem> listOfDeliveryItems = new ArrayList<>();
 }
