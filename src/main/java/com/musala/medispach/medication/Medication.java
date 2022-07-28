@@ -1,10 +1,12 @@
 package com.musala.medispach.medication;
 
 import com.musala.medispach.delivery.Delivery;
+import com.musala.medispach.deliveryItem.DeliveryItem;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "medication")
@@ -28,8 +30,7 @@ public class Medication {
     @Column(name = "med_image")
     private String image;
 
-    @ManyToOne()
-    @JoinColumn(name = "med_del_code")
-    private Delivery delivery;
+    @OneToMany(mappedBy = "medicationId")
+    private List<DeliveryItem> deliveryItem;
 
 }
