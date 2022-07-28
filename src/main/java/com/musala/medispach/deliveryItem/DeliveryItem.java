@@ -1,6 +1,7 @@
 package com.musala.medispach.deliveryItem;
 
 import com.musala.medispach.delivery.Delivery;
+import com.musala.medispach.deliveryOrder.DeliveryOrder;
 import com.musala.medispach.medication.Medication;
 import lombok.Data;
 
@@ -16,15 +17,16 @@ public class DeliveryItem {
     @Column(name = "item_id")
     private long id;
 
-    @ManyToOne()
-    @JoinColumn(name = "item_med_id", nullable = false)
-    private Medication medicationId;
-
-    @ManyToOne()
-    @JoinColumn(name = "item_del_id", nullable = false)
-    private Delivery deliveryId;
-
 
     @Column(name = "item_quantity" , nullable = false)
     private int quantity;
+
+    @ManyToOne()
+    @JoinColumn(name = "item_med_id")
+    private Medication medicationId;
+
+    @ManyToOne()
+    @JoinColumn(name = "item_do_id")
+    private DeliveryOrder deliverOrderId;
+
 }

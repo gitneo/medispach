@@ -10,6 +10,6 @@ import javax.persistence.*;
 public class DeliveryItemDto {
     private long id;
     private Medication medicationId;
-    private Delivery deliveryId;
+    private Delivery deliverOrderId;
     private int quantity;
 }
