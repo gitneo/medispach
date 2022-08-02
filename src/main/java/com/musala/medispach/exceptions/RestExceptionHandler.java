@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.NoSuchElementException;
@@ -30,6 +31,15 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<ErrorResponse> handleNoSuchElementException(HttpServletRequest request, NoSuchElementException ex){
         String errorMessage = "The row for the address is not existent " + request.getRequestURI();
         ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND,errorMessage);
+
+        return new ResponseEntity<>(errorResponse,errorResponse.getHttpStatus());
+    }
+
+
+    @ExceptionHandler(NoResultException.class)
+    public  ResponseEntity<ErrorResponse> handleNoResultException(HttpServletRequest httpServletRequest, NoResultException ex) {
+        String message = "The items requested for is not available";
+        ErrorResponse errorResponse =  new ErrorResponse(HttpStatus.NOT_FOUND,message);
 
         return new ResponseEntity<>(errorResponse,errorResponse.getHttpStatus());
     }
