@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,7 +21,7 @@ public class DeliveryOrderController {
 
 
     @PostMapping("/deliveryOrder")
-    public ResponseEntity<DeliveryOrderDto> createDeliveryOrder(@RequestBody DeliveryOrderDto deliveryOrderDto){
+    public ResponseEntity<DeliveryOrderDto> createDeliveryOrder(@Valid @RequestBody DeliveryOrderDto deliveryOrderDto){
         DeliveryOrderDto deliveryOrder = this.deliveryOrderService.createDeliveryOrder(deliveryOrderDto);
         return new ResponseEntity<>(deliveryOrder, HttpStatus.CREATED);
     }
