@@ -1,4 +1,4 @@
-package com.musala.medispach.medication;
+package com.musala.medispach.medication.service;
 
 import lombok.Data;
 

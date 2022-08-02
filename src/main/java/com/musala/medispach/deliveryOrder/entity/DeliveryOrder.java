@@ -1,4 +1,4 @@
-package com.musala.medispach.deliveryOrder;
+package com.musala.medispach.deliveryOrder.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;

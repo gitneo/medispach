@@ -1,6 +1,8 @@
-package com.musala.medispach.drone;
+package com.musala.medispach.drone.service;
 
 import com.musala.medispach.delivery.entity.Delivery;
+import com.musala.medispach.drone.DroneModel;
+import com.musala.medispach.drone.DroneState;
 import lombok.Data;
 
 import javax.validation.constraints.Max;

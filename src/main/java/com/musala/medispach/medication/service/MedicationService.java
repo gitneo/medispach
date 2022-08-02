@@ -1,5 +1,7 @@
-package com.musala.medispach.medication;
+package com.musala.medispach.medication.service;
 
+import com.musala.medispach.medication.entity.Medication;
+import com.musala.medispach.medication.entity.MedicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

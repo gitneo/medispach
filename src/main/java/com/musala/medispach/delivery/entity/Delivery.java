@@ -1,8 +1,8 @@
 package com.musala.medispach.delivery.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.musala.medispach.deliveryOrder.DeliveryOrder;
-import com.musala.medispach.drone.Drone;
+import com.musala.medispach.deliveryOrder.entity.DeliveryOrder;
+import com.musala.medispach.drone.enitity.Drone;
 import lombok.Data;
 
 import javax.persistence.*;

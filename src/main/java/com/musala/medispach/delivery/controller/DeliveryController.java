@@ -2,8 +2,8 @@ package com.musala.medispach.delivery.controller;
 
 import com.musala.medispach.delivery.service.DeliveryDto;
 import com.musala.medispach.delivery.service.DeliveryService;
-import com.musala.medispach.deliveryItem.DeliveryItemDto;
-import com.musala.medispach.drone.DroneDto;
+import com.musala.medispach.deliveryItem.service.DeliveryItemDto;
+import com.musala.medispach.drone.service.DroneDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

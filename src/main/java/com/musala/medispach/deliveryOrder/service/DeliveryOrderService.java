@@ -1,12 +1,12 @@
-package com.musala.medispach.deliveryOrder;
+package com.musala.medispach.deliveryOrder.service;
 
-import com.musala.medispach.deliveryItem.DeliveryItemService;
+import com.musala.medispach.deliveryOrder.entity.DeliveryOrder;
+import com.musala.medispach.deliveryOrder.entity.DeliveryOrderRepository;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.NoResultException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class DeliveryOrderService {

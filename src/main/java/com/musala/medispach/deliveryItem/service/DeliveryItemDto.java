@@ -1,4 +1,4 @@
-package com.musala.medispach.deliveryItem;
+package com.musala.medispach.deliveryItem.service;
 
 import lombok.Data;
 

@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MedicineAspect {
 
-    @Before(value = "execution(* com.musala.medispach.medication.MedicationController.createMedication(..))")
+    @Before(value = "execution(* com.musala.medispach.medication.controller.MedicationController.createMedication(..))")
     public void logMedicineCreationAdvice(JoinPoint joinPoint){
         log.info("Creating new medicine");
     }

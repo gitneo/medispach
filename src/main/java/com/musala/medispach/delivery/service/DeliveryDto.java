@@ -1,12 +1,6 @@
 package com.musala.medispach.delivery.service;
 
-import com.musala.medispach.deliveryOrder.DeliveryOrder;
-import com.musala.medispach.drone.Drone;
-import com.musala.medispach.medication.Medication;
 import lombok.Data;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 public class DeliveryDto {

@@ -1,5 +1,7 @@
-package com.musala.medispach.drone;
+package com.musala.medispach.drone.controller;
 
+import com.musala.medispach.drone.service.DroneDto;
+import com.musala.medispach.drone.service.DroneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

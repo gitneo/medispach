@@ -1,4 +1,4 @@
-package com.musala.medispach.deliveryOrder;
+package com.musala.medispach.deliveryOrder.service;
 
 import com.musala.medispach.deliveryItem.entity.DeliveryItem;
 import lombok.Data;

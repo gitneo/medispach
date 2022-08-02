@@ -1,5 +1,6 @@
-package com.musala.medispach.deliveryOrder;
+package com.musala.medispach.deliveryOrder.service;
 
+import com.musala.medispach.deliveryOrder.entity.DeliveryOrder;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

@@ -1,4 +1,4 @@
-package com.musala.medispach.drone;
+package com.musala.medispach.drone.enitity;
 
 import com.musala.medispach.deliveryItem.entity.DeliveryItem;
 import org.springframework.data.jpa.repository.Query;

@@ -1,5 +1,7 @@
-package com.musala.medispach.medication;
+package com.musala.medispach.medication.controller;
 
+import com.musala.medispach.medication.service.MedicationDto;
+import com.musala.medispach.medication.service.MedicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

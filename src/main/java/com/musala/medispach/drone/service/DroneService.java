@@ -1,7 +1,10 @@
-package com.musala.medispach.drone;
+package com.musala.medispach.drone.service;
 
-import com.musala.medispach.deliveryItem.DeliveryItemDto;
-import com.musala.medispach.deliveryItem.DeliveryItemMapper;
+import com.musala.medispach.deliveryItem.service.DeliveryItemDto;
+import com.musala.medispach.deliveryItem.service.DeliveryItemMapper;
+import com.musala.medispach.drone.DroneState;
+import com.musala.medispach.drone.enitity.Drone;
+import com.musala.medispach.drone.enitity.DroneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -88,9 +91,9 @@ public class DroneService {
      * @return available drones for loading
      */
     public DroneDto findAvailableDrone(){
-        Drone drone = this.droneRepository.getAvailableDrone("IDLE").orElseThrow(NoResultException::new);
-        this.upDateDrone(DroneMapper.instance.toDto(drone));
-
+        Drone drone = this.droneRepository
+                          .getAvailableDrone(DroneState.IDLE.name())
+                          .orElseThrow(NoResultException::new);
         return DroneMapper.instance.toDto(drone);
     }
 

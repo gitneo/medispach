@@ -2,14 +2,17 @@ package com.musala.medispach.delivery.service;
 
 import com.musala.medispach.delivery.entity.Delivery;
 import com.musala.medispach.delivery.entity.DeliveryRepository;
-import com.musala.medispach.deliveryItem.DeliveryItemDto;
-import com.musala.medispach.deliveryItem.DeliveryItemMapper;
-import com.musala.medispach.deliveryItem.entity.DeliveryItem;
-import com.musala.medispach.deliveryOrder.DeliveryOrder;
-import com.musala.medispach.deliveryOrder.DeliveryOrderDto;
-import com.musala.medispach.deliveryOrder.DeliveryOrderMapper;
-import com.musala.medispach.deliveryOrder.DeliveryOrderService;
+import com.musala.medispach.deliveryItem.service.DeliveryItemDto;
+import com.musala.medispach.deliveryItem.service.DeliveryItemMapper;
+import com.musala.medispach.deliveryOrder.entity.DeliveryOrder;
+import com.musala.medispach.deliveryOrder.service.DeliveryOrderDto;
+import com.musala.medispach.deliveryOrder.service.DeliveryOrderMapper;
+import com.musala.medispach.deliveryOrder.service.DeliveryOrderService;
 import com.musala.medispach.drone.*;
+import com.musala.medispach.drone.enitity.Drone;
+import com.musala.medispach.drone.service.DroneDto;
+import com.musala.medispach.drone.service.DroneMapper;
+import com.musala.medispach.drone.service.DroneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +31,7 @@ public class DeliveryService {
     private final DeliveryOrderService deliveryOrderService;
 
     @Autowired
-    public DeliveryService(DeliveryRepository deliveryRepository,DroneService droneService,DeliveryOrderService deliveryOrderService){
+    public DeliveryService(DeliveryRepository deliveryRepository, DroneService droneService, DeliveryOrderService deliveryOrderService){
         this.deliveryRepository = deliveryRepository;
         this.droneService = droneService;
         this.deliveryOrderService = deliveryOrderService;

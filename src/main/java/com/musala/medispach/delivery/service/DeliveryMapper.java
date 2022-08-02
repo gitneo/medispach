@@ -1,8 +1,8 @@
 package com.musala.medispach.delivery.service;
 
 import com.musala.medispach.delivery.entity.Delivery;
-import com.musala.medispach.deliveryOrder.DeliveryOrder;
-import com.musala.medispach.drone.Drone;
+import com.musala.medispach.deliveryOrder.entity.DeliveryOrder;
+import com.musala.medispach.drone.enitity.Drone;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

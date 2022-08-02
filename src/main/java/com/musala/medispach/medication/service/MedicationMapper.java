@@ -1,5 +1,6 @@
-package com.musala.medispach.medication;
+package com.musala.medispach.medication.service;
 
+import com.musala.medispach.medication.entity.Medication;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

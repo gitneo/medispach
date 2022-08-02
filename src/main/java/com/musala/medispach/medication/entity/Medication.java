@@ -1,4 +1,4 @@
-package com.musala.medispach.medication;
+package com.musala.medispach.medication.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.musala.medispach.deliveryItem.entity.DeliveryItem;

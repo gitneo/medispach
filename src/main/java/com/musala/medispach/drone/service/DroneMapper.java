@@ -1,5 +1,6 @@
-package com.musala.medispach.drone;
+package com.musala.medispach.drone.service;
 
+import com.musala.medispach.drone.enitity.Drone;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
