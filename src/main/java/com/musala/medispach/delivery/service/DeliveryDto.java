@@ -1,5 +1,6 @@
-package com.musala.medispach.delivery;
+package com.musala.medispach.delivery.service;
 
+import com.musala.medispach.deliveryOrder.DeliveryOrder;
 import com.musala.medispach.drone.Drone;
 import com.musala.medispach.medication.Medication;
 import lombok.Data;
@@ -12,7 +13,7 @@ public class DeliveryDto {
 
     private long id;
     private int serial;
-    private String location;
-    private Drone drone;
-    List<Medication> listOfMedications = new ArrayList<>();
+    private String status;
+    private long droneId;
+    private long deliveryOrderId;
 }
