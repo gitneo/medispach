@@ -1,8 +1,8 @@
 package com.musala.medispach.drone;
 
-import com.musala.medispach.delivery.Delivery;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.musala.medispach.delivery.entity.Delivery;
 import lombok.Data;
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -22,8 +22,8 @@ public class Drone {
     @Column(name = "drn_code")
     private long id;
 
-    @Column(name = "drn_serial", nullable = false, length = 100)
-    private int serialNo;
+    @Column(name = "drn_serial", nullable = false)
+    private String serialNo;
 
     @Column(name = "drn_model", nullable = false)
     @Enumerated(EnumType.STRING)
@@ -32,14 +32,16 @@ public class Drone {
     @Column(name = "drn_weight_limit", nullable = false)
     private BigDecimal weightLimit;
 
-    @Column(name = "drn_batt_capcity" , nullable = false, precision = 2, scale = 2)
+    @Column(name = "drn_batt_capcity" , nullable = false)
     private BigDecimal batteryCapacity;
+
 
     @Column(name = "drn_state" , nullable = false)
     @Enumerated(EnumType.STRING)
     private DroneState state;
 
     @OneToMany(mappedBy = "drone")
+    @JsonManagedReference
     private List<Delivery> deliveryList =  new ArrayList<>();
 
     public void addDelivery(Delivery delivery){
