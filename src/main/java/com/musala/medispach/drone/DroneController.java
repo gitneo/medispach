@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -21,6 +22,12 @@ public class DroneController {
 
 
 
+    /**
+     *
+     * @param droneDto
+     * @return registered drone
+     */
+
     @PostMapping("/drone")
     public ResponseEntity<DroneDto> createDrone(@RequestBody DroneDto droneDto){
         DroneDto createdDrone =  this.droneService.createDrone(droneDto);
@@ -30,12 +37,31 @@ public class DroneController {
 
 
 
-
-    @GetMapping("/drone/{id}")
-    public ResponseEntity<DroneDto> getDrone(@PathVariable("id") long id){
-          DroneDto droneDto = this.droneService.getDrone(id);
+    /**
+     *
+     * @return available drone for delivery
+     */
+    @GetMapping("/drone")
+    public ResponseEntity<DroneDto> getDrone(){
+          DroneDto droneDto = this.droneService.findAvailableDrone();
           return new ResponseEntity<>(droneDto, HttpStatus.OK);
     }
+
+
+
+
+    /**
+     *
+     * @param droneId
+     * @return drone battery capacity
+     */
+    @GetMapping("/drone/battery/{id}")
+    public ResponseEntity<BigDecimal> getDroneBatteryCapacity(@PathVariable("id") long droneId){
+        BigDecimal batteryCapacity = this.droneService.getDroneBatteryCapacity(droneId);
+        return new ResponseEntity<>(batteryCapacity,HttpStatus.OK);
+    };
+
+
 
 
 
@@ -65,4 +91,5 @@ public class DroneController {
         this.droneService.deleteDrone(id);
         return new ResponseEntity<>("Drone with id "+ id+" deleted", HttpStatus.OK);
     }
+
 }
