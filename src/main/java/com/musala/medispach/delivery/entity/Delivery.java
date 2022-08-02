@@ -1,13 +1,11 @@
-package com.musala.medispach.delivery;
+package com.musala.medispach.delivery.entity;
 
-import com.musala.medispach.deliveryItem.DeliveryItem;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.musala.medispach.deliveryOrder.DeliveryOrder;
 import com.musala.medispach.drone.Drone;
-import com.musala.medispach.medication.Medication;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name="DELIVERY")
@@ -22,8 +20,9 @@ public class Delivery {
     @Column(name = "del_serial", nullable = false)
     private int serial;
 
-    @Column(name="del_location", nullable = false)
-    private String location;
+
+    @Column(name = "del_status", nullable = false)
+    private String status;
 
     @ManyToOne()
     @JoinColumn(name = "del_dr_code")
