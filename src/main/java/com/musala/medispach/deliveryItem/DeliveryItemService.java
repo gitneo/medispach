@@ -1,6 +1,7 @@
 package com.musala.medispach.deliveryItem;
 
-import com.musala.medispach.delivery.DeliveryDto;
+import com.musala.medispach.deliveryItem.entity.DeliveryItem;
+import com.musala.medispach.deliveryItem.entity.DeliveryItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
