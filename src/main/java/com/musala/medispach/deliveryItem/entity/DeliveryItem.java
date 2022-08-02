@@ -1,11 +1,12 @@
-package com.musala.medispach.deliveryItem;
+package com.musala.medispach.deliveryItem.entity;
 
-import com.musala.medispach.delivery.Delivery;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.musala.medispach.deliveryOrder.DeliveryOrder;
 import com.musala.medispach.medication.Medication;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "delivery_item")
@@ -19,14 +20,16 @@ public class DeliveryItem {
 
 
     @Column(name = "item_quantity" , nullable = false)
-    private int quantity;
+    private BigDecimal quantity;
 
     @ManyToOne()
     @JoinColumn(name = "item_med_id")
-    private Medication medicationId;
+    @JsonBackReference(value = "medicationRef")
+    private Medication medication;
 
     @ManyToOne()
     @JoinColumn(name = "item_do_id")
-    private DeliveryOrder deliverOrderId;
+    @JsonBackReference(value = "deliveryItemListRef")
+    private DeliveryOrder deliverOrder;
 
 }
