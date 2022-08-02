@@ -1,10 +1,12 @@
 package com.musala.medispach.drone;
 
+import com.musala.medispach.deliveryItem.DeliveryItemDto;
+import com.musala.medispach.deliveryItem.DeliveryItemMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.persistence.NoResultException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,4 +60,51 @@ public class DroneService {
     public void deleteDrone(long id){
         this.droneRepository.deleteById(id);
     }
+
+
+
+
+
+    /**
+     *
+     * @param droneId
+     * @return loaded medication items for a given drone
+     */
+    public List<DeliveryItemDto> getDroneDeliveryItems(long droneId){
+        List<DeliveryItemDto> deliveryItems =  new ArrayList<>();
+        this.droneRepository.getDroneDeliveryItems(droneId).forEach(deliveryItem -> {
+            deliveryItems.add(DeliveryItemMapper.instance.toDto(deliveryItem));
+        });
+
+        return deliveryItems;
+    }
+
+
+
+
+
+    /**
+     *
+     * @return available drones for loading
+     */
+    public DroneDto findAvailableDrone(){
+        Drone drone = this.droneRepository.getAvailableDrone("IDLE").orElseThrow(NoResultException::new);
+        this.upDateDrone(DroneMapper.instance.toDto(drone));
+
+        return DroneMapper.instance.toDto(drone);
+    }
+
+
+
+
+    /**
+     *
+     * @param droneId
+     * @return check battery level for a given drone;
+     */
+    public BigDecimal getDroneBatteryCapacity(long droneId){
+        return this.getDrone(droneId).getBatteryCapacity();
+    }
+
+
 }
