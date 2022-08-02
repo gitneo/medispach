@@ -1,18 +1,18 @@
 package com.musala.medispach.deliveryOrder;
 
-import com.musala.medispach.deliveryItem.DeliveryItem;
+import com.musala.medispach.deliveryItem.entity.DeliveryItem;
 import lombok.Data;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Data
 public class DeliveryOrderDto {
 
     private long id;
-    private int serial;
-    private String status;
+    @Pattern(regexp = "ORD-[0-9]+")
+    private String serial;
+    private String location;
     private List<DeliveryItem> deliveryItemList;
 
 }
