@@ -1,7 +1,7 @@
 package com.musala.medispach.medication;
 
-import com.musala.medispach.delivery.Delivery;
-import com.musala.medispach.deliveryItem.DeliveryItem;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.musala.medispach.deliveryItem.entity.DeliveryItem;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -30,7 +30,9 @@ public class Medication {
     @Column(name = "med_image")
     private String image;
 
-    @OneToMany(mappedBy = "medicationId")
+    @OneToMany(mappedBy = "medication")
+    @JsonManagedReference(value = "medicationRef")
     private List<DeliveryItem> deliveryItem;
 
 }
+
