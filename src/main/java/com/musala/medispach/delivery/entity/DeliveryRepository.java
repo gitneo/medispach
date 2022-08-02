@@ -1,4 +1,4 @@
-package com.musala.medispach.delivery;
+package com.musala.medispach.delivery.entity;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

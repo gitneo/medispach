@@ -26,8 +26,10 @@ public class Delivery {
 
     @ManyToOne()
     @JoinColumn(name = "del_dr_code")
+    @JsonBackReference
     private Drone drone;
 
-    @OneToMany(mappedBy = "deliveryId")
-    List<DeliveryItem> listOfDeliveryItems = new ArrayList<>();
+    @OneToOne()
+    @JoinColumn(name = "del_do_id", referencedColumnName = "do_id")
+    private DeliveryOrder deliveryOrder;
 }
