@@ -1,10 +1,12 @@
 package com.musala.medispach.deliveryOrder;
 
-import com.musala.medispach.deliveryItem.DeliveryItem;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.musala.medispach.delivery.entity.Delivery;
+import com.musala.medispach.deliveryItem.entity.DeliveryItem;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -18,15 +20,18 @@ public class DeliveryOrder {
     private long id;
 
     @Column(name = "do_serial", nullable = false)
-    private int serial;
+    private String serial;
 
-    @Column(name="do_status", nullable = false)
-    private String status;
+    @Column(name="do_location", nullable = false)
+    private String location;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "item_do_id")
+    @JsonManagedReference(value="deliveryItemListRef")
     private List<DeliveryItem> deliveryItemList;
 
-
+    @OneToOne(mappedBy = "deliveryOrder")
+    @JsonBackReference(value="deliveryIdRef")
+    private Delivery deliveryId;
 }
 
