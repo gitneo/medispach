@@ -1,15 +1,13 @@
 package com.musala.medispach.deliveryItem;
 
-import com.musala.medispach.delivery.Delivery;
-import com.musala.medispach.medication.Medication;
 import lombok.Data;
 
-import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Data
 public class DeliveryItemDto {
     private long id;
-    private Medication medicationId;
-    private Delivery deliverOrderId;
-    private int quantity;
+    private long medicationId;
+    private long deliverOrderId;
+    private BigDecimal quantity;
 }
