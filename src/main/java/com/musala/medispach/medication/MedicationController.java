@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,9 +21,8 @@ public class MedicationController {
 
 
     @PostMapping("/medication")
-    public ResponseEntity<MedicationDto> createMedication(@RequestBody MedicationDto medicationDto){
+    public ResponseEntity<MedicationDto> createMedication(@Valid @RequestBody MedicationDto medicationDto){
         MedicationDto createdMedication =  this.medicationService.createMedication(medicationDto);
-
         return new ResponseEntity<>(createdMedication, HttpStatus.CREATED);
     }
 
