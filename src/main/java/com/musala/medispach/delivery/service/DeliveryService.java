@@ -13,6 +13,7 @@ import com.musala.medispach.drone.enitity.Drone;
 import com.musala.medispach.drone.service.DroneDto;
 import com.musala.medispach.drone.service.DroneMapper;
 import com.musala.medispach.drone.service.DroneService;
+import com.musala.medispach.exceptions.DroneOverloadException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +47,7 @@ public class DeliveryService {
      * @return load a drone with medication items;
      * @throws Exception
      */
-    public DeliveryDto createDelivery(long orderId) throws Exception {
+    public DeliveryDto createDelivery(long orderId) throws Exception{
 
         //Search for available drones
         DroneDto droneDto = this.droneService.findAvailableDrone();
@@ -58,8 +59,11 @@ public class DeliveryService {
 
 
         //Check weight of order
-        if (isOrderWeightOk(deliveryOrder,drone))
-            throw new Exception("too heavy");
+        if (isDroneOverloaded(deliveryOrder,drone)){
+            drone.setState(DroneState.IDLE);
+            this.droneService.upDateDrone(DroneMapper.instance.toDto(drone));
+            throw new DroneOverloadException(drone.getSerialNo()+" is overloaded");
+        }
 
 
         //Create a new delivery to be dispatched
@@ -129,7 +133,7 @@ public class DeliveryService {
 
 
 
-    public boolean isOrderWeightOk(DeliveryOrder order, Drone drone){
+    public boolean isDroneOverloaded(DeliveryOrder order, Drone drone){
         return
             order.getDeliveryItemList()
                     .stream()
