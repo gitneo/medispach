@@ -32,12 +32,10 @@ public class DeliveryController {
      * @return load a drone with medication items;
      */
     @PostMapping("/delivery/{id}")
-    public ResponseEntity<DeliveryDto>  createDelivery(@PathVariable("id") long orderId){
+    public ResponseEntity<DeliveryDto>  createDelivery(@PathVariable("id") long orderId) throws Exception{
         DeliveryDto createDelivery = null;
-        try {
-            createDelivery = this.deliveryService.createDelivery(orderId);
-        }catch(Exception e){
-        }
+        createDelivery = this.deliveryService.createDelivery(orderId);
+
         return new ResponseEntity<>(createDelivery, HttpStatus.CREATED);
     }
 
