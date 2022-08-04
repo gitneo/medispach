@@ -1,5 +1,6 @@
 package com.musala.medispach.drone.service;
 
+import com.musala.medispach.DroneListItems;
 import com.musala.medispach.deliveryItem.service.DeliveryItemDto;
 import com.musala.medispach.deliveryItem.service.DeliveryItemMapper;
 import com.musala.medispach.drone.DroneState;
@@ -24,6 +25,12 @@ public class DroneService {
     }
 
 
+
+    /**
+     *
+     * @param droneDto
+     * @return newly registered drone
+     */
     public DroneDto createDrone(DroneDto droneDto){
         Drone drone =  DroneMapper.instance.toDrone(droneDto);
         Drone newDrone = droneRepository.save(drone);
@@ -32,14 +39,21 @@ public class DroneService {
     }
 
 
-
-    public DroneDto getDrone(long id) {
-        Drone drone = this.droneRepository.findById(id).orElseThrow(NoResultException::new);
+    /**
+     *
+     * @param droneId
+     * @return drone
+     */
+    public DroneDto getDrone(long droneId) {
+        Drone drone = this.droneRepository.findById(droneId).orElseThrow(NoResultException::new);
         return DroneMapper.instance.toDto(drone);
     }
 
 
-
+    /**
+     *
+     * @return all registered drone
+     */
     public List<DroneDto> getDrones(){
         List<DroneDto> droneList = new ArrayList<>();
 
@@ -51,6 +65,11 @@ public class DroneService {
     }
 
 
+    /**
+     *
+     * @param droneDto
+     * @return updated drone
+     */
     public DroneDto upDateDrone(DroneDto droneDto){
          Drone drone =  DroneMapper.instance.toDrone(droneDto);
          Drone updatedDrone = this.droneRepository.save(drone);
@@ -73,13 +92,10 @@ public class DroneService {
      * @param droneId
      * @return loaded medication items for a given drone
      */
-    public List<DeliveryItemDto> getDroneDeliveryItems(long droneId){
+    public List<DroneListItems> getDroneDeliveryItems(long droneId){
         List<DeliveryItemDto> deliveryItems =  new ArrayList<>();
-        this.droneRepository.getDroneDeliveryItems(droneId).forEach(deliveryItem -> {
-            deliveryItems.add(DeliveryItemMapper.instance.toDto(deliveryItem));
-        });
-
-        return deliveryItems;
+        List<DroneListItems> droneDeliveryItems = this.droneRepository.getDroneDeliveryItems(droneId);
+        return droneDeliveryItems;
     }
 
 

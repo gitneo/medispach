@@ -1,12 +1,16 @@
 package com.musala.medispach.drone.enitity;
 
+import com.musala.medispach.DroneListItems;
 import com.musala.medispach.deliveryItem.entity.DeliveryItem;
+import com.musala.medispach.deliveryItem.service.DeliveryItemDto;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -25,7 +29,12 @@ public interface DroneRepository extends CrudRepository<Drone,Long>{
     BigDecimal getDroneBatteryCapacity(@Param("drone") Drone drone);
 
 
-    @Query(value = "select delivery_item.* " +
+    @Query(value = "select " +
+            "       med_id, " +
+            "       med_code, " +
+            "       med_image, " +
+            "       med_name," +
+            "       med_weight " +
             "       from  " +
             "           drone,  " +
             "           delivery,  " +
@@ -38,5 +47,5 @@ public interface DroneRepository extends CrudRepository<Drone,Long>{
             "       and do_id = item_do_id " +
             "       and med_id = item_med_id " +
             "       and drn_code = :v_drn_code", nativeQuery = true)
-    Iterable<DeliveryItem> getDroneDeliveryItems(@Param("v_drn_code") long id);
+    List<DroneListItems> getDroneDeliveryItems(@Param("v_drn_code") long id);
 }

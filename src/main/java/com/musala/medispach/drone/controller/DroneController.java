@@ -1,5 +1,7 @@
 package com.musala.medispach.drone.controller;
 
+import com.musala.medispach.DroneListItems;
+import com.musala.medispach.deliveryItem.service.DeliveryItemDto;
 import com.musala.medispach.drone.service.DroneDto;
 import com.musala.medispach.drone.service.DroneService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,7 @@ public class DroneController {
 
 
 
+
     /**
      *
      * @return available drone for delivery
@@ -48,6 +51,8 @@ public class DroneController {
           DroneDto droneDto = this.droneService.findAvailableDrone();
           return new ResponseEntity<>(droneDto, HttpStatus.OK);
     }
+
+
 
 
 
@@ -62,6 +67,21 @@ public class DroneController {
         BigDecimal batteryCapacity = this.droneService.getDroneBatteryCapacity(droneId);
         return new ResponseEntity<>(batteryCapacity,HttpStatus.OK);
     };
+
+
+
+
+
+    /**
+     *
+     * @param droneId
+     * @return list of items to be delivered by the drone
+     */
+    @GetMapping("/drone/items/{id}")
+    public ResponseEntity<List<DroneListItems>> getDroneDeliveryItems(@PathVariable("id") long droneId){
+        List<DroneListItems> deliveryItemDtoList =  this.droneService.getDroneDeliveryItems(droneId);
+        return new ResponseEntity<>(deliveryItemDtoList,HttpStatus.OK);
+    }
 
 
 
