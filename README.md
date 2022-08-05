@@ -1,79 +1,135 @@
-## Drones
 
-[[_TOC_]]
+# Medispatch
+Medispatch is a drone management application for dispatching and delivering of medication items.
+## Features
+- Drone registration
+- Load drone with medication items;
+- Check loaded medication items for a given drone;
+- Check available drones for loading;
+- Check drone battery level for a given drone;
+## Design
 
----
+![Schema Screenshot](src/main/resources/static/images/schema.png)
 
-:scroll: **START**
 
-### Introduction
 
-There is a major new technology that is destined to be a disruptive force in the field of transportation: **the drone**.
-Just as the mobile phone allowed developing countries to leapfrog older technologies for personal communication, the
-drone has the potential to leapfrog traditional transportation infrastructure.
 
-Useful drone functions include delivery of small items that are (urgently) needed in locations with difficult access.
+## Requirements
+* Springboot Framework
+* Docker
+## Dependencies
+There are a number of third-party dependencies used in the project.
+* spring-boot-starter-web
+* spring-boot-starter-data-jpa
+* mysql-connector-java
+* logback-core
+* spring-boot-starter-aop
 
----
+## Database
+It uses a MySql database running in a docker container. This can be changed easily in the applications.yml file for any other database.
+## Run Locally
 
-### Task description
+Clone the project
 
-We have a fleet of **10 drones**. A drone is capable of carrying devices, other than cameras, and capable of delivering
-small loads. For our use case **the load is medications**.
+```bash
+  git clone https://github.com/gitneo/medispach.git
+```
 
-A **Drone** has:
+Go to the project directory
 
-- serial number (100 characters max);
-- model (Lightweight, Middleweight, Cruiserweight, Heavyweight);
-- weight limit (500gr max);
-- battery capacity (percentage);
-- state (IDLE, LOADING, LOADED, DELIVERING, DELIVERED, RETURNING).
+```bash
+  cd ogo-okafor
+```
 
-Each **Medication** has:
+Build
 
-- name (allowed only letters, numbers, ‘-‘, ‘_’);
-- weight;
-- code (allowed only upper case letters, underscore and numbers);
-- image (picture of the medication case).
+```bash
+  mvn clean install
+```
 
-Develop a service via REST API that allows clients to communicate with the drones (i.e. **dispatch controller**). The
-specific communicaiton with the drone is outside the scope of this task.
+Start the server
 
-The service should allow:
+```bash
+  docker-compose up
+```
 
-- registering a drone;
-- loading a drone with medication items;
-- checking loaded medication items for a given drone;
-- checking available drones for loading;
-- check drone battery level for a given drone;
 
-> Feel free to make assumptions for the design approach.
+## Rest API
+The REST API to the Medispatch app is decribed below
+### Registering a Drone
+#### Request
+```
+POST localhost:8080/medispatch/api/v1/drone
+```
+#### Response
+```
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Wed, 03 Aug 2022 23:27:57 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
 
----
+{"id":2,"serialNo":"BETADRONE-12","model":"CRUISERWEIGHT","weightLimit":500,"batteryCapacity":100,"state":"IDLE","deliveryList":[]}
+```
 
-### Requirements
+## Loading a Drone with medication items
+#### Request
+```
+POST http://localhost:8080/medispatch/api/v1/delivery/8
+```
+#### Response
+```
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Wed, 03 Aug 2022 23:43:12 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
 
-While implementing your solution **please take care of the following requirements**:
+{"id":2,"serial":-1591359585,"status":"READY","droneId":6,"deliveryOrderId":8}
+```
+## Checking loaded medication items for a given Drone
+#### Request
+```
+GET http://localhost:8080/medispatch/api/v1/drone/items/1
+```
+#### Response
+```
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Thu, 04 Aug 2022 09:43:45 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
 
-#### Functional requirements
+[{"med_id":1,"med_image":"xxxxxx","med_name":"CrystalMeth","med_weight":600.00,"med_code":"MED_0020"}]
+```
+## Checking available drones for loading
+#### Request
+```
+GET http://localhost:8080/medispatch/api/v1/drone/idle
+```
+#### Response
+```
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Thu, 04 Aug 2022 19:43:47 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
 
-- There is no need for UI;
-- Prevent the drone from being loaded with more weight that it can carry;
-- Prevent the drone from being in LOADING state if the battery level is **below 25%**;
-- Introduce a periodic task to check drones battery levels and create history/audit event log for this.
+[{"id":8,"serialNo":"BETADRONE-18","model":"CRUISERWEIGHT","weightLimit":500.00,"batteryCapacity":100.00,"state":"IDLE","deliveryList":[]}]
+```
 
----
+## Checking Drone battery level
+#### Request
+```
+GET http://localhost:8080/medispatch/api/v1/drone/battery/1
+```
+#### Response
+```
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Thu, 04 Aug 2022 19:52:32 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
 
-#### Non-functional requirements
-
-- Input/output data must be in JSON format;
-- Your project must be buildable and runnable;
-- Your project must have a README file with build/run/test instructions (use DB that can be run locally, e.g. in-memory,
-  via container);
-- Required data must be preloaded in the database.
-- JUnit tests are optional but advisable (if you have time);
-- Advice: Show us how you work through your commit history.
-
----
-
-:scroll: **END**
+100
+```
