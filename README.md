@@ -11,7 +11,8 @@ Medispatch is a drone management application for dispatching and delivering of m
 
 ![Schema Screenshot](src/main/resources/static/images/schema.png)
 
-
+An order(delivery_order) is made for a set of medication items(delivery_items). This order is loaded on a 
+delivery drone and is stored in the system as a delivery to be dispatched and delivered.
 
 
 ## Requirements
