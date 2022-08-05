@@ -1,14 +1,8 @@
-45161 [http-nio-8080-exec-4] INFO  com.musala.medispach.drone - Delivery drone POWERDRONE-6 is available for service.
-45171 [http-nio-8080-exec-4] INFO  com.musala.medispach.drone - Drone battery capacity is at a 100.00%
-45172 [http-nio-8080-exec-4] INFO  com.musala.medispach.drone - Loading drone POWERDRONE-6
-45628 [http-nio-8080-exec-4] INFO  com.musala.medispach.delivery - Delivery drone POWERDRONE-6 LOADED and ready for delivery.
-45628 [http-nio-8080-exec-4] INFO  com.musala.medispach.delivery - POWERDRONE-6 battery capacity is at 100.00
-322428 [http-nio-8080-exec-10] INFO  com.musala.medispach.delivery - POWERDRONE-6 is DELIVERING medication items
-322429 [http-nio-8080-exec-10] INFO  com.musala.medispach.delivery - POWERDRONE-6 battery capacity is at 100.00
-71844 [http-nio-8080-exec-2] INFO  com.musala.medispach.delivery - POWERDRONE-6is RETURNING.
-71845 [http-nio-8080-exec-2] INFO  com.musala.medispach.delivery - POWERDRONE-6 battery capacity is at 100.00
-159623 [http-nio-8080-exec-5] INFO  com.musala.medispach.delivery - POWERDRONE-6is now IDLE and awaiting delivery dispatch request.
-159623 [http-nio-8080-exec-5] INFO  com.musala.medispach.delivery - POWERDRONE-6 battery capacity is at 100.00
-55981 [http-nio-8080-exec-2] INFO  com.musala.medispach.medication - Creating new medicine
-215789 [http-nio-8080-exec-1] INFO  com.musala.medispach.medication - Creating new medicine
-239938 [http-nio-8080-exec-4] INFO  com.musala.medispach.medication - Creating new medicine
+209279 [http-nio-8080-exec-4] INFO  com.musala.medispach.drone - Delivery drone DILVERYDRONE-1 is available for service.
+209289 [http-nio-8080-exec-4] INFO  com.musala.medispach.drone - Drone battery capacity is at a 100.00%
+209290 [http-nio-8080-exec-4] INFO  com.musala.medispach.drone - Loading drone DILVERYDRONE-1
+209798 [http-nio-8080-exec-4] INFO  com.musala.medispach.delivery - Delivery drone DILVERYDRONE-1 LOADED and ready for delivery.
+209799 [http-nio-8080-exec-4] INFO  com.musala.medispach.delivery - DILVERYDRONE-1 battery capacity is at 100.00
+257688 [http-nio-8080-exec-5] INFO  com.musala.medispach.drone - Delivery drone DILVERYDRONE-2 is available for service.
+257688 [http-nio-8080-exec-5] INFO  com.musala.medispach.drone - Drone battery capacity is at a 100.00%
+257688 [http-nio-8080-exec-5] INFO  com.musala.medispach.drone - Loading drone DILVERYDRONE-2
