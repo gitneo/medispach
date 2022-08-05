@@ -2,6 +2,7 @@ package com.musala.medispach.drone.controller;
 
 import com.musala.medispach.DroneListItems;
 import com.musala.medispach.deliveryItem.service.DeliveryItemDto;
+import com.musala.medispach.drone.enitity.Drone;
 import com.musala.medispach.drone.service.DroneDto;
 import com.musala.medispach.drone.service.DroneService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,15 @@ public class DroneController {
     public ResponseEntity<DroneDto> getDrone(){
           DroneDto droneDto = this.droneService.findAvailableDrone();
           return new ResponseEntity<>(droneDto, HttpStatus.OK);
+    }
+
+
+
+
+    @GetMapping("/drone/idle")
+    public ResponseEntity<List<Drone>> getIdleDrone(){
+        List<Drone> drone = this.droneService.findIdleDrones();
+        return new ResponseEntity<>(drone, HttpStatus.OK);
     }
 
 

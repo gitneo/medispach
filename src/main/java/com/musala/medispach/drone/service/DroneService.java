@@ -114,6 +114,16 @@ public class DroneService {
     }
 
 
+    /**
+     *
+     * @return idle drones
+     */
+    public List<Drone> findIdleDrones(){
+        List<Drone> listOfIdleDrones = this.droneRepository.findByState(DroneState.IDLE);
+        return listOfIdleDrones;
+    }
+
+
 
 
     /**

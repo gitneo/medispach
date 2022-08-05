@@ -3,6 +3,7 @@ package com.musala.medispach.drone.enitity;
 import com.musala.medispach.DroneListItems;
 import com.musala.medispach.deliveryItem.entity.DeliveryItem;
 import com.musala.medispach.deliveryItem.service.DeliveryItemDto;
+import com.musala.medispach.drone.DroneState;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -15,6 +16,7 @@ import java.util.Optional;
 
 @Repository
 public interface DroneRepository extends CrudRepository<Drone,Long>{
+
 
     @Query(value = "select * " +
             "       from Drone " +
@@ -48,4 +50,6 @@ public interface DroneRepository extends CrudRepository<Drone,Long>{
             "       and med_id = item_med_id " +
             "       and drn_code = :v_drn_code", nativeQuery = true)
     List<DroneListItems> getDroneDeliveryItems(@Param("v_drn_code") long id);
+
+    List<Drone> findByState(DroneState droneState);
 }
